@@ -5,7 +5,7 @@ public class Auditorium{
 	private String name;
 	private String locate;
 	private boolean available;
-	
+	private Chair[][] chairs;	
 
 	//METHODS//
 	public Auditorium(String name, String locate, boolean available){
@@ -24,5 +24,11 @@ public class Auditorium{
 	}
 	public void setAvailable(boolean available){
 		this.available = available;
+	}
+	public Chair[][] getChairs(){
+		return this.chairs;
+	}
+	public void setChairs(Chair[][] chairs){
+		this.chairs = chairs;
 	}
 }

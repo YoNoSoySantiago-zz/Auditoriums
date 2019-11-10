@@ -3,21 +3,23 @@ public class Event{
 
 	//ATRIBUTES//
 	private String name;
-	private String date;
+	private int date;
 	private int startTime;
 	private int endTime;
 	private String teacherName;
 	private int amountPeople;
+	private Auditorium auditorium;
 
 	//METHODS//
-	public Event(String name, String date, int startTime, int endTime, String teacherName, int amountPeople){
+	public Event(String name, int date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
 		this.name = name;
 		this.date = date;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.teacherName = teacherName;		
+		this.teacherName = teacherName;	
+		this.auditorium = auditorium;	
 	}
-	public String getDate(){
+	public int getDate(){
 		return this.date;
 	}
 	public int getStartTime(){
@@ -26,8 +28,11 @@ public class Event{
 	public int getEndTime(){
 		return this.endTime;
 	}
-	private int getAmountPeople(){
+	public int getAmountPeople(){
 		return this.amountPeople;
+	}
+	public Auditorium getAuditorium(){
+		return this.auditorium;
 	}
 	
 }	

@@ -29,5 +29,8 @@ public class Chair{
 	public void setAvailable(boolean available){
 		this.available = available;
 	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
 }
