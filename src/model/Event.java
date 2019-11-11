@@ -3,7 +3,7 @@ public class Event{
 
 	//ATRIBUTES//
 	private String name;
-	private int date;
+	private Calendar date;
 	private int startTime;
 	private int endTime;
 	private String teacherName;
@@ -11,7 +11,7 @@ public class Event{
 	private Auditorium auditorium;
 
 	//METHODS//
-	public Event(String name, int date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
+	public Event(String name, Calendar date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
 		this.name = name;
 		this.date = date;
 		this.startTime = startTime;
@@ -19,7 +19,7 @@ public class Event{
 		this.teacherName = teacherName;	
 		this.auditorium = auditorium;	
 	}
-	public int getDate(){
+	public Calendar getDate(){
 		return this.date;
 	}
 	public int getStartTime(){

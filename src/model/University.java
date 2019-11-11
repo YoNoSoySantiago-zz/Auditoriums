@@ -5,10 +5,16 @@ public class University{
 	private ArrayList<Event> events = new ArrayList<Event>();
 	private ArrayList<Auditorium> auditoriums = new ArrayList<Auditorium>();
 
-	public String reportDefectChair(String position, String description){
+
+	//String name, String locate, boolean available, Chair[][] chairs
+	public void addAuditorium(String name, String locate, boolean available, Chair[][] chairs){
+		Auditorium auditorium = new Auditorium(name,locate,available,chairs);
+		auditoriums.add(auditorium);
+	}
+	public String reportDefectChair(int auditorium, String position, String description){
 		String result = "Esta silla no existe";
-		for(int i = 0; i<auditoriums.size();i++){
-			Chair[][] chair = auditoriums.get(i).getChairs();
+		if(auditoriums.get(auditorium-1) != null){
+			Chair[][] chair = auditoriums.get(auditorium-1).getChairs();
 			for(int j =0; j<chair.length;j++){
 				for(int k=0;k<chair[0].length;k++){
 					if(chair[j][k].getPosition().equalsIgnoreCase(position)){
@@ -20,11 +26,11 @@ public class University{
 					}
 				}
 			}
-			
-		}
+		}	
+		
 		return result;
 	}
-	public void addChairsAuditorium(int[] chairsByLine){
+	public Chair[][] addChairsAuditorium(int[] chairsByLine){
 		int aux=0;
 		for(int i =0;i<chairsByLine.length;i++){
 			if(chairsByLine[i]> aux){
@@ -38,6 +44,7 @@ public class University{
 				chairAuditorium[i][j] = chair;
 			}
 		}
+		return chairAuditorium;
 	}
 	public double calcularPorcentDefect(){
 		double total =0,defect=0,result=0;
@@ -58,7 +65,7 @@ public class University{
 		return result;
 	}
 	//String name, String date, int startTime, int endTime, String teacherName, int amountPeople
-	public String addEvent(String name, int date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
+	public String addEvent(String name, int day, int month, int year, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
 		boolean conditional = false;
 		String result = "";
 		for(int i =0;i<events.size();i++){
@@ -94,6 +101,9 @@ public class University{
 				}
 			}
 		}
+	}
+	public void showAuditorium(){
+
 	}
 	 
 }

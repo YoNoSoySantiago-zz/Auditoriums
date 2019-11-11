@@ -8,10 +8,11 @@ public class Auditorium{
 	private Chair[][] chairs;	
 
 	//METHODS//
-	public Auditorium(String name, String locate, boolean available){
+	public Auditorium(String name, String locate, boolean available, Chair[][] chairs){
 		this.name = name;
 		this.locate = locate;
 		this.available = available;
+		this.chairs = chairs;
 	}
 	public String getName(){
 		return this.name;
