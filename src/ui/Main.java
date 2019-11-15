@@ -1,14 +1,17 @@
 package ui;
 import java.util.Scanner;
-public class Mian{
+import model.*;
+import java.time.*;
+public class Main{
 	private Scanner s = new Scanner(System.in);
 	private Scanner n = new Scanner(System.in);
 	private  University university = new University();
 	public static void main(String[]args){
+		Main main = new Main();
 		boolean continue1 = true;
 		do{
-			showMenu();
-			continue1 = start();
+			main.showMenu();
+			continue1 = main.start();
 		}while(continue1 == true);
 		
 
@@ -23,21 +26,22 @@ public class Mian{
 	}
 	public boolean start(){
 		int selection,year,month,day,startTime,endTime,amountPeople,audi,number;
-		Calendar today = Calendar.getInstance();
-		String name,locate,teacherName,position,row;
+		LocalDate today;
+		int[] chair;
+		String name,locate,teacherName,position,row,description;
 		Chair[][] chairs;
 		selection = n.nextInt();
 		switch (selection){
 			case 1:
-			//String name, String locate, boolean available, Chair[][] chairs
+			//String name, String locate, boolean available, Chair[][] chair   
 			System.out.println("indique el nombre del auditorio que desea agregar: ");
 			name = s.nextLine();
 			System.out.println("indique la ubicacion del auditorio:");
 			locate = s.nextLine();
 			do{
 				System.out.println("indique la cantidad de filas(silleteria) que contiene el auditorio");
-				int[] chair = new Int[n.nextInt()];
-				for(int = 0; i<chair.length;i++){
+				chair = new int[n.nextInt()];
+				for(int i= 0; i<chair.length;i++){
 					System.out.println("indique la cantidad de sillas en la fila: "+(char)('A'+i));
 					chair[i] = n.nextInt();
 				}
@@ -71,6 +75,8 @@ public class Mian{
 				university.showAuditorium();
 				cantAudi[i] = n.nextInt();
 			}
+		//String name, int day, int month, int year, int startTime, int endTime, String teacherName, int amountPeople, int[] audis
+			System.out.println(university.addEvent(name,day,month,year,startTime,endTime,teacherName,amountPeople,cantAudi));
 			break;
 
 			case 3:
@@ -78,7 +84,7 @@ public class Mian{
 			university.showAuditorium();
 			audi = n.nextInt();
 			System.out.println("indique la fila donde se encuentra en formato alfabetico: ");
-			row = s.next().char(0);
+			row = Character.toString(s.next().charAt(0));
 			System.out.println("indique el numero de la silla");
 			number = n.nextInt();
 			System.out.println("indique una description del daño de la silla");
@@ -87,6 +93,9 @@ public class Mian{
 			university.reportDefectChair(audi,position,description);
 			break;
 
+			case 4:
+			university.showAuditorium();
+ 
 
 		}
 		if(selection == 0){

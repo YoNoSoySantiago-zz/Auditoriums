@@ -1,17 +1,18 @@
 package model;
+import java.time.*;
 public class Event{
 
 	//ATRIBUTES//
 	private String name;
-	private Calendar date;
+	private LocalDate date;
 	private int startTime;
 	private int endTime;
 	private String teacherName;
 	private int amountPeople;
-	private Auditorium auditorium;
+	private Auditorium[] auditorium;
 
 	//METHODS//
-	public Event(String name, Calendar date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium auditorium){
+	public Event(String name, LocalDate date, int startTime, int endTime, String teacherName, int amountPeople, Auditorium[] auditorium){
 		this.name = name;
 		this.date = date;
 		this.startTime = startTime;
@@ -19,7 +20,7 @@ public class Event{
 		this.teacherName = teacherName;	
 		this.auditorium = auditorium;	
 	}
-	public Calendar getDate(){
+	public LocalDate getDate(){
 		return this.date;
 	}
 	public int getStartTime(){
@@ -31,7 +32,7 @@ public class Event{
 	public int getAmountPeople(){
 		return this.amountPeople;
 	}
-	public Auditorium getAuditorium(){
+	public Auditorium[] getAuditorium(){
 		return this.auditorium;
 	}
 	

@@ -14,6 +14,7 @@ public class Auditorium{
 		this.available = available;
 		this.chairs = chairs;
 	}
+	
 	public String getName(){
 		return this.name;
 	}
