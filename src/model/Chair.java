@@ -23,6 +23,9 @@ public class Chair{
 	public boolean getAvailable(){
 		return this.available;
 	}
+	public String getDescription(){
+		return this.description;
+	}
 	public void setFuntional(boolean funtional){
 		this.funtional = funtional;
 	}
