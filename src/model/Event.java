@@ -20,6 +20,9 @@ public class Event{
 		this.teacherName = teacherName;	
 		this.auditorium = auditorium;	
 	}
+	public String getName(){
+		return this.name;
+	}
 	public LocalDate getDate(){
 		return this.date;
 	}

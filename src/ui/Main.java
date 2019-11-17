@@ -9,7 +9,9 @@ public class Main{
 	public static void main(String[]args){
 		Main main = new Main();
 		boolean continue1 = true;
+		main.init();
 		do{
+			System.out.println("///////////////////////////////////////\n");
 			main.showMenu();
 			continue1 = main.start();
 		}while(continue1 == true);
@@ -18,9 +20,14 @@ public class Main{
 	}
 	public void showMenu(){
 		System.out.println("Por favor escoja la obcion a realizar\n"+
-			"1. Agregar un nuevo audirio a la Universidad\n"+
-			"2. Reservar un audirio\n"+
-			"3. Reportar silla defectuosa\n"+
+			"1. Agregar un nuevo audirio a la Universidad\n"+	//ya
+			"2. Crear un Evento\n"+								//ya		
+			"3. Reportar silla defectuosa\n"+					//ya
+			"4. Mostrar sillas de un Auditorio\n"+				
+			"5. Mostrar sillas del Evento\n"+
+			"6. Añadir sillas\n"+
+			"7. Mostrar porcentaje de sillas defectuosas\n"+
+			"8. Mostrar registro de Eventos\n"+
 			"0. Salir");
 
 	}
@@ -76,7 +83,8 @@ public class Main{
 				cantAudi[i] = n.nextInt();
 			}
 		//String name, int day, int month, int year, int startTime, int endTime, String teacherName, int amountPeople, int[] audis
-			System.out.println(university.addEvent(name,day,month,year,startTime,endTime,teacherName,amountPeople,cantAudi));
+			String mensaje = university.addEvent(name,day,month,year,startTime,endTime,teacherName,amountPeople,cantAudi);
+			System.out.println(mensaje);
 			break;
 
 			case 3:
@@ -94,7 +102,61 @@ public class Main{
 			break;
 
 			case 4:
+			System.out.println("indique el auditorio: ");
 			university.showAuditorium();
+			university.showAuditoriumChairs(n.nextInt());
+			break;
+
+			case 5:
+			System.out.println("indique el evento: ");
+			
+			if(university.getEvents().size() > 0){
+				university.showEventsChairs(n.nextInt());
+				university.showEvents();
+			}else{
+				System.out.println("No hay eventos disponibles");
+			}
+			break;
+
+			case 6:
+			if(university.getEvents().size() > 0){
+				System.out.println("indique el evento: ");
+				university.showEvents();
+				int a = n.nextInt();
+				if(university.getEvents().get(a-1) != null){
+					if(university.getEvents().get(a-1).getAuditorium().length > 0){
+						System.out.println("indique el auditorio: ");
+						for(int i = 0;i<university.getEvents().get(a-1).getAuditorium().length;i++){
+							System.out.println((i+1)+". "+university.getEvents().get(a-1).getAuditorium()[i].getName());
+						}
+						int b = n.nextInt();
+						university.addChairEvent(a,b);
+					}
+				}else{
+					System.out.println("Este evento no Existe");
+				}
+			}else{
+				System.out.println("No hay eventos disponibles");
+			}
+			
+			break;
+
+			case 7:
+			double defect = university.calcularPorcentDefect();
+			System.out.println("EL porcentaje de sillas defectuosas es: "+ defect*100+"%");
+			break;
+
+			case 8:
+			university.showEventRegister();
+			break;
+
+			case 0:
+			System.out.println("GRACIAS! ");
+			break;
+
+
+			default:
+			System.out.println("ingresa una obcion correcta");
  
 
 		}
@@ -103,5 +165,13 @@ public class Main{
 		}else{
 			return true;
 		}
+	}
+	public void init(){
+		int[] chair = new int []{10,10,10,9,9,9,8,8,8,7};
+		university.addAuditorium("Manuelita","Auditorios",true,university.addChairsAuditorium(chair));
+		chair = new int[]{8,8,8,8,8,8,8,8};
+		university.addAuditorium("Sidoc","Auditorios",true,university.addChairsAuditorium(chair));
+
+		
 	}
 }
